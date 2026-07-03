@@ -81,8 +81,8 @@ export async function POST(req: Request) {
     // 6. Return success
     return NextResponse.json({ success: true }, { status: 200 });
 
-  } catch (error) {
-    if (error instanceof z.ZodError) {
+  } catch (error: any) {
+    if (error as any instanceof z.ZodError) {
       return NextResponse.json(
         { error: error.errors[0].message },
         { status: 400 }
